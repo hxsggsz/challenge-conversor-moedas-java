@@ -9,14 +9,21 @@ public class Main {
         String INITIAL_VALUE_PROPERTY = "1";
         String title = "Ensira o valor de converção";
         value = showInputDialog(title, INITIAL_VALUE_PROPERTY);
-        int userValueNumber = Integer.parseInt(value);
-        System.out.println(userValueNumber);
+
+        System.out.println(value);
 
         if (value.isEmpty()) {
             errorMessage = "valor em branco";
             showMessageDialog(null, errorMessage, errorMessage, 0);
+            return;
         }
 
+        if (!value.matches("^[0-9]*$")) {
+            errorMessage = "Apenas valores numéricos";
+            showMessageDialog(null, errorMessage, errorMessage, 0);
+            return;
+        }
 
+        int userValueNumber = Integer.parseInt(value);
     }
 }
